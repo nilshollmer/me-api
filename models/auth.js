@@ -1,5 +1,5 @@
 const sqlite3 = require('sqlite3').verbose();
-const db = new sqlite3.Database('./db/users.sqlite');
+const db = new sqlite3.Database('./db/me.sqlite');
 
 const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
@@ -75,7 +75,7 @@ const auth = {
         db.get(sql, email, (err, rows) => {
             if (err) {
                 return res.status(500).json({
-                    errors: {   
+                    errors: {
                         status: 500,
                         title: "Database error",
                         detail: "Error while running SQL-command"
@@ -115,6 +115,7 @@ const auth = {
                             status: 200,
                             title: "Login successful",
                             detail: `User ${email} is now logged in.`,
+                            user: `${email}`,
                             token: jwtToken
                         }
                     });

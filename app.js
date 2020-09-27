@@ -8,7 +8,7 @@ const bodyParser = require("body-parser");
 
 // Database
 const sqlite3 = require('sqlite3').verbose();
-const db = new sqlite3.Database('./db/users.sqlite');
+const db = new sqlite3.Database('./db/me.sqlite');
 
 // Models
 const auth = require('./models/auth.js');
@@ -36,10 +36,10 @@ app.use((req, res, next) => {
     next();
 });
 
-app.use("/", index);
-app.use("/reports", reports);
-app.use("/login", (req, res) => auth.login(res, req.body));
-app.use("/register", (req, res) => auth.register(res, req.body));
+app.use("/me-api/", index);
+app.use("/me-api/reports", reports);
+app.use("/me-api/login", (req, res) => auth.login(res, req.body));
+app.use("/me-api/register", (req, res) => auth.register(res, req.body));
 // app.get("/hello/:msg", hello);
 
 app.use((req, res, next) => {
