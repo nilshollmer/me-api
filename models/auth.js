@@ -1,5 +1,8 @@
-const sqlite3 = require('sqlite3').verbose();
-const db = new sqlite3.Database('./db/me.sqlite');
+// const sqlite3 = require('sqlite3').verbose();
+// const path = require('path');
+// const dbPath = path.resolve(__dirname, '../me.sqlite')
+const db = require("../db/database.js");
+
 
 const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
@@ -174,13 +177,13 @@ const auth = {
                         errors: {
                             status: 500,
                             title: "Database error",
-                            detail: "Error while running SQL-command."
+                            detail: `User with email ${email} already exists.`
                         }
                     });
                 }
 
                 return res.status(201).json({
-                    errors: {
+                    data: {
                         status: 201,
                         title: "User successfully created",
                         detail: `User with email ${email} successfully created`
