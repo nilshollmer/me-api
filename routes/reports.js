@@ -14,6 +14,11 @@ router.post('/edit',
     (req, res) => reports.updateReport(res, req.body)
 );
 
+router.post('/delete',
+    (req, res, next) => auth.checkToken(req, res, next),
+    (req, res) => reports.deleteReport(res, req.body)
+);
+
 router.get("/", (req, res) => reports.getAllReports(req, res));
 router.get("/week/:week", (req, res) => reports.getReport(res, req.params.week));
 

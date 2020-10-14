@@ -39,10 +39,10 @@ app.use((req, res, next) => {
     next();
 });
 
-app.use("/me-api/", index);
-app.use("/me-api/reports", reports);
-app.use("/me-api/login", (req, res) => auth.login(res, req.body));
-app.use("/me-api/register", (req, res) => auth.register(res, req.body));
+app.use("/", index);
+app.use("/reports", reports);
+app.use("/login", (req, res) => auth.login(res, req.body));
+app.use("/register", (req, res) => auth.register(res, req.body));
 // app.get("/hello/:msg", hello);
 
 app.use((req, res, next) => {
@@ -67,4 +67,6 @@ app.use((err, req, res, next) => {
     });
 });
 
-app.listen(port, () => console.log(`API listening to port ${port}.`));
+const server = app.listen(port, () => console.log(`API listening to port ${port}.`));
+
+module.exports = server;
