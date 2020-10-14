@@ -16,14 +16,5 @@ router.post('/edit',
 
 router.get("/", (req, res) => reports.getAllReports(req, res));
 router.get("/week/:week", (req, res) => reports.getReport(res, req.params.week));
-// router.get('/reports/week/:kmom', (req, res, next) => {
-//     const data = {
-//         data: {
-//
-//         }
-//     };
-//
-//     res.json(data);
-// });
 
 module.exports = router;
