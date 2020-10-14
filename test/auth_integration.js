@@ -3,7 +3,6 @@ process.env.NODE_ENV = 'test';
 const chai = require("chai");
 const chaiHttp = require("chai-http");
 const server = require("../app.js");
-const db = require("../db/database.js");
 
 chai.should();
 
@@ -16,6 +15,7 @@ describe('auth', () => {
                 email: "",
                 password: "test"
             };
+
             chai.request(server)
                 .post("/login")
                 .send(user)
@@ -31,6 +31,7 @@ describe('auth', () => {
                 email: "admin",
                 password: ""
             };
+
             chai.request(server)
                 .post("/login")
                 .send(user)
@@ -46,6 +47,7 @@ describe('auth', () => {
                 email: "notauser",
                 password: "test"
             };
+
             chai.request(server)
                 .post("/login")
                 .send(user)
@@ -61,6 +63,7 @@ describe('auth', () => {
                 email: "admin",
                 password: "wrong password"
             };
+
             chai.request(server)
                 .post("/login")
                 .send(user)
@@ -78,6 +81,7 @@ describe('auth', () => {
                 email: "admin",
                 password: "test"
             };
+
             chai.request(server)
                 .post("/login")
                 .send(user)
@@ -98,6 +102,7 @@ describe('auth', () => {
                 email: "",
                 password: "pass"
             };
+
             chai.request(server)
                 .post("/register")
                 .send(user)
@@ -114,6 +119,7 @@ describe('auth', () => {
                 email: "email",
                 password: ""
             };
+
             chai.request(server)
                 .post("/register")
                 .send(user)
@@ -130,6 +136,7 @@ describe('auth', () => {
                 email: "admin",
                 password: "pass"
             };
+
             chai.request(server)
                 .post("/register")
                 .send(user)
@@ -146,6 +153,7 @@ describe('auth', () => {
                 email: "email",
                 password: "pass"
             };
+
             chai.request(server)
                 .post("/register")
                 .send(user)

@@ -3,8 +3,6 @@ process.env.NODE_ENV = 'test';
 const chai = require("chai");
 const chaiHttp = require("chai-http");
 const server = require("../app.js");
-const db = require("../db/database.js");
-
 chai.should();
 
 chai.use(chaiHttp);
@@ -99,7 +97,8 @@ describe('reports', () => {
                 week: "",
                 title: "title",
                 data: "report body"
-            }
+            };
+
             chai.request(server)
                 .post("/reports/add")
                 .set("x-access-token", jwtToken)
@@ -116,7 +115,8 @@ describe('reports', () => {
                 week: "1",
                 title: "",
                 data: "report body"
-            }
+            };
+
             chai.request(server)
                 .post("/reports/add")
                 .set("x-access-token", jwtToken)
@@ -133,7 +133,8 @@ describe('reports', () => {
                 week: "1",
                 title: "title",
                 data: ""
-            }
+            };
+
             chai.request(server)
                 .post("/reports/add")
                 .set("x-access-token", jwtToken)
@@ -150,7 +151,8 @@ describe('reports', () => {
                 week: "1",
                 title: "title",
                 data: "report body"
-            }
+            };
+
             chai.request(server)
                 .post("/reports/add")
                 .set("x-access-token", jwtToken)
@@ -168,7 +170,8 @@ describe('reports', () => {
                 week: "4",
                 title: "title",
                 data: "report body"
-            }
+            };
+
             chai.request(server)
                 .post("/reports/add")
                 .set("x-access-token", jwtToken)
@@ -205,7 +208,8 @@ describe('reports', () => {
                 week: "",
                 title: "title",
                 data: "report body"
-            }
+            };
+
             chai.request(server)
                 .post("/reports/edit")
                 .set("x-access-token", jwtToken)
@@ -223,14 +227,15 @@ describe('reports', () => {
                 week: "2",
                 title: "new title",
                 data: "report body"
-            }
+            };
+
             chai.request(server)
                 .post("/reports/edit")
                 .set("x-access-token", jwtToken)
                 .send(body)
                 .end((err, res) => {
                     res.status.should.equal(201);
-                    res.body.data.detail.should.equal('Report with week number 2 has been updated')
+                    res.body.data.detail.should.equal('Report with week number 2 has been updated');
 
                     done();
                 });

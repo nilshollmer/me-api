@@ -3,9 +3,6 @@
 // const dbPath = path.resolve(__dirname, '../me.sqlite')
 const db = require("../db/database.js");
 
-
-const jwt = require('jsonwebtoken');
-
 const reports = {
     getAllReports: function(req, res) {
         const sql = "SELECT * FROM reports;";

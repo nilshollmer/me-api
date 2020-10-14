@@ -1,17 +1,9 @@
 const express = require('express');
-const router = express.Router();
 const cors = require("cors");
 const morgan = require("morgan");
 
 const app = express();
 const bodyParser = require("body-parser");
-
-// Database
-// const sqlite3 = require('sqlite3').verbose();
-// const path = require('path');
-// const dbPath = path.resolve(__dirname, 'me.sqlite')
-// const db = new sqlite3.Database(dbPath);
-
 
 // Models
 const auth = require('./models/auth.js');
@@ -47,6 +39,7 @@ app.use("/register", (req, res) => auth.register(res, req.body));
 
 app.use((req, res, next) => {
     var err = new Error("Not Found");
+
     err.status = 404;
     next(err);
 });
@@ -59,9 +52,9 @@ app.use((err, req, res, next) => {
     res.status(err.status || 500).json({
         "errors": [
             {
-            "status": err.status,
-            "title": err.message,
-            "detail": err.message
+                "status": err.status,
+                "title": err.message,
+                "detail": err.message
             }
         ]
     });
