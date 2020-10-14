@@ -1,6 +1,3 @@
-// const sqlite3 = require('sqlite3').verbose();
-// const path = require('path');
-// const dbPath = path.resolve(__dirname, '../me.sqlite')
 const db = require("../db/database.js");
 
 
@@ -186,7 +183,7 @@ const auth = {
                     data: {
                         status: 201,
                         title: "User successfully created",
-                        detail: `User with email ${email} successfully created`
+                        detail: `User with email ${email} successfully created`,
                     }
                 });
             });

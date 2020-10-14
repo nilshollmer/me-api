@@ -51,6 +51,7 @@ const reports = {
             return res.status(200).json( { data: row } );
         });
     },
+
     updateReport: function(res, body) {
         const week = body.week;
         const title = body.title;
@@ -87,6 +88,7 @@ const reports = {
             });
         });
     },
+
     createReport: function(res, body) {
         const week = body.week;
         const title = body.title;
@@ -98,6 +100,26 @@ const reports = {
                     status: 401,
                     title: "Week number missing",
                     detail: "Week number missing in request"
+                }
+            });
+        }
+
+        if (!title) {
+            return res.status(401).json({
+                errors: {
+                    status: 401,
+                    title: "Title missing",
+                    detail: "Title missing in request"
+                }
+            });
+        }
+
+        if (!data) {
+            return res.status(401).json({
+                errors: {
+                    status: 401,
+                    title: "Report body missing",
+                    detail: "Report body missing in request"
                 }
             });
         }
