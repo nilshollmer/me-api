@@ -16,7 +16,7 @@ CREATE TABLE users (
 DROP TABLE IF EXISTS reports;
 
 CREATE TABLE IF NOT EXISTS reports (
-    week        INT(1) NOT NULL,
+    week        INT(1) NOT NULL UNIQUE,
     title       VARCHAR(20) NOT NULL,
     data        TEXT(10000) NOT NULL,
     UNIQUE(title)
