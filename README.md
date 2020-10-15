@@ -1,5 +1,6 @@
 # Me-API
-
+[![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/nilshollmer/me-api/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/nilshollmer/me-api/?branch=master)
+[![Build Status](https://travis-ci.com/nilshollmer/me-api.svg?branch=master)](https://travis-ci.com/nilshollmer/me-api)
 ## Install
 Run `npm install` to install dependencies.
 
